@@ -1,0 +1,11 @@
+.background {
+  background-image: url('../../../assets/background.jpg');
+  width: 100%;
+  min-height: 100vh;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+.cursor-pointer{
+  cursor: pointer;
+}
+

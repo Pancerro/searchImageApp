@@ -1,0 +1,45 @@
+<div>
+  <div class="search-container">
+    <app-search class="m-5" [isRound]="true" [isReadonly]="true" [searchImage]="searchKeyword" (reKeyword)="startSearch($event)"></app-search>
+  </div>
+  <div class="main-container">
+      <div class="hint-container mb-5" >
+        <h1 class="mb-4">{{searchKeyword | titlecase}}</h1>
+        <div *ngIf="!isViewHint else loadingHint" id="hint-container" class="scroll-hint-container" (wheel)="scrollHint($event)">
+          <ng-container *ngFor="let hint of hintTable; first as first; last as last; let i = index">
+            <button [id]="'hint'+i" [ngClass]="{'ml-2': !first, 'mr-5':last}" type="button" class="btn btn-hint btn-outline-secondary" (click)="startSearch(hint?.word)">{{hint?.word | titlecase}}</button>
+          </ng-container>
+        </div>
+      </div>
+     <div *ngIf="!isViewImage else loadingImage" id="image-container" class="image-container" infiniteScroll
+          [infiniteScrollDistance]="5"
+          [infiniteScrollThrottle]="50"
+          (scrolled)="scrollImage()"
+          [scrollWindow]="false">
+       <div class="alert alert-danger text-center" *ngIf="photoResults.length === 0"> No results</div>
+       <div class="masonry">
+              <div class="image-content mb-5 item-masonry" *ngFor="let photo of photoResults; let i = index;" >
+                <img class="cursor-pointer" (click)="bigImage(i)" data-toggle="modal" data-target="#big" [alt]="photo?.alt_description" [src]="photo.urls.small">
+                <br><button class="btn-tag mr-2 mt-2 font-weight-light" *ngFor="let tag of photo?.tags" (click)="startSearch(tag.title)"> {{tag.title | titlecase}} </button>
+              </div>
+       </div>
+     </div>
+  </div>
+  <app-modal-big-image [isDisabledButton]="isDisabledButton" [image]="image" [id]="'big'" (changePhoto)="changePhoto($event)"></app-modal-big-image>
+</div>
+<ng-template #loadingHint>
+    <div class="scroll-hint-container">
+      <div class="spinner-border m-5 overflow-hidden spinner-hint"*ngFor="let i of [1,2,3,4,5,6,7,8,9,10,12,13,14,15]" role="status">
+        <span class="sr-only ">Loading...</span>
+      </div>
+    </div>
+</ng-template>
+<ng-template #loadingImage>
+  <div class="image-container">
+    <div class="masonry">
+      <div class="spinner-border m-5 overflow-hidden item spinner-image"*ngFor="let i of [1,2,3,4,5,6,7,8,9,10,12,13,14,15]" role="status">
+        <span class="sr-only ">Loading...</span>
+      </div>
+    </div>
+  </div>
+</ng-template>

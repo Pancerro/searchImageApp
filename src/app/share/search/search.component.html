@@ -1,0 +1,23 @@
+<div class="search-container" appClickOutside (clickOutside)="closeHint()">
+  <div class="input-group">
+    <div class="input-group-prepend">
+      <div [ngClass]="isRound?'form-rounded':'bg-light'" class="input-group-text border-0">
+        <fa-icon [icon]="faSearchIcon"></fa-icon>
+      </div>
+    </div>
+    <input (click)="openHint()" [readonly]="isReadonly" type="text" class="form-control border-0" placeholder="Search free photos" [(ngModel)]="searchImage"
+           (keyup)="writeInSearchInput()"
+           (keydown.enter)="searchAndShow()">
+    <div class="input-group-append">
+      <div *ngIf="searchImage" (click)="clearSearch()" [ngClass]="isRound?'form-rounded':'bg-light'" class="input-group-text border-0">
+        <fa-icon [icon]="faTimesIcon"></fa-icon>
+      </div>
+    </div>
+  </div>
+  <div *ngIf="searchImage.length >2 && !isReadonly && viewHint" class="mt-2 pt-2 pb-2 bg-light hint-container">
+    <div *ngFor="let hint of hintTable;">
+      <button type="button" class="btn btn-light text-left rounded-0 w-100" (click)="startSearch(hint?.word)">{{hint?.word}}</button>
+    </div>
+    <button *ngIf="hintTable?.length==0" type="button" class="btn btn-light text-left rounded-0 w-100">No hint</button>
+  </div>
+</div>

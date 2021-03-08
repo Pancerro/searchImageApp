@@ -1,0 +1,23 @@
+<div class="background d-flex">
+  <div class="container mt-lg-5">
+    <div class="text-white">
+      <h1 class=mb-4>ImageApp</h1>
+      <p class="mb-4">The internet's source of <u>freely-usable images</u>. <br>Powered by creators everywhere.</p>
+    </div>
+    <app-search [isReadonly]="false" [isRound]="false" (reKeyword)="searchImage($event)"></app-search>
+    <div *ngIf="search.searchImage.length <3" class="text-white mt-lg-4">
+      <strong>Trending: </strong>
+      <ng-container *ngIf="trendTable else loadingText">
+        <ng-container *ngFor="let trend of trendTable | async; last as isLast">
+          <span *ngIf="!isLast" class="cursor-pointer" (click)="search.startSearch(trend?.slug)">{{trend?.slug}},
+          </span><span *ngIf="isLast" class="cursor-pointer" (click)="search.startSearch(trend?.slug)">{{trend?.slug}} </span>
+        </ng-container>
+      </ng-container>
+    </div>
+  </div>
+</div>
+
+<ng-template #loadingText>
+  <span>Loading...</span>
+</ng-template>
+

@@ -1,0 +1,40 @@
+.modal-dialog {
+  min-width: 85%;
+}
+.modal-content {
+  height: 90vh;
+}
+.modal-header {
+  border-bottom: 0 none;
+  height: 10%;
+}
+.modal-title {
+  line-height: 80%;
+}
+.modal-body {
+  height: 80%;
+}
+.modal-footer {
+  border-top: 0 none;
+  height: 10%;
+}
+.btn-outline-secondary {
+  border-color: lightgrey;
+  font-weight: 400;
+}
+.left-arrow {
+  position: absolute;
+  top: 50%;
+  left: 0;
+}
+.right-arrow {
+  position: absolute;
+  top: 50%;
+  right: 0;
+}
+
+.spinner-image {
+  width: 10rem;
+  height: 10rem;
+}
+

@@ -1,0 +1,14 @@
+.hint-container {
+  position: absolute;
+  z-index: 1;
+  width: 100%;
+}
+.form-rounded {
+  border-radius: 1rem;
+}
+.search-container {
+  position: relative;
+}
+.form-control {
+  box-shadow: none;
+}
