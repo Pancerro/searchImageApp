@@ -5,7 +5,7 @@
           <div class="modal-title d-inline-flex"><img class="mr-2" [src]="image.user.profile_image.small" alt="profile image">
             <div>
               <span class="h6">{{image.user.name}} </span>
-              <p><small class="text-muted q float-left">@{{image.user.username}}</small></p>
+              <p><small class="text-muted float-left">@{{image.user.username}}</small></p>
             </div>
           </div>
           <div>
@@ -21,7 +21,7 @@
           <img class="img-fluid h-100" [alt]="image.alt_description" [src]="image.urls.full">
         </div>
         <div class="modal-footer">
-          <div class="mr-auto">
+          <div class="mr-auto w-50">
             <fa-icon *ngIf="image?.location?.name" class="mr-1" style="color: lightgray" [icon]="faMapMarkerAltIcon"></fa-icon>
             <span class="h6 ml-1">{{image?.location?.name}} <span *ngIf="image?.location?.name">-</span> {{image.created_at | date: 'MMMM YYYY'}}</span>
           </div>
@@ -41,7 +41,6 @@
   <fa-icon [icon]="faChevronLeftIcon"></fa-icon>
   </button>
 </div>
-
 <ng-template #loading>
   <div class="modal-content">
     <div class="modal-header">
@@ -63,8 +62,8 @@
         </button>
       </div>
     </div>
-    <div class="modal-body text-center q">
-      <div class="spinner-border spinner-image mt-lg-5" role="status">
+    <div class="modal-body text-center ">
+      <div class="spinner-border" role="status">
         <span class="sr-only ">Loading...</span>
       </div>
     </div>
@@ -86,5 +85,4 @@
       </button>
     </div>
   </div>
-
 </ng-template>

@@ -38,3 +38,15 @@
   height: 10rem;
 }
 
+
+@media only screen and (max-height: 1000px) {
+  .modal-header {
+    height: 10%;
+  }
+  .modal-body {
+    height: 75%;
+  }
+  .modal-footer {
+    height: 15%;
+  }
+}

@@ -3,8 +3,8 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { StarterPageComponent } from './page/starter-page/starter-page.component';
-import { SearchResultPageComponent } from './page/search-result-page/search-result-page.component';
+import { StarterPageComponent } from './component/starter-page/starter-page.component';
+import { SearchResultPageComponent } from './component/search-result-page/search-result-page.component';
 import { ModalBigImageComponent } from './share/modal-big-image/modal-big-image.component';
 import {FormsModule} from '@angular/forms';
 import {HttpClientModule} from '@angular/common/http';
